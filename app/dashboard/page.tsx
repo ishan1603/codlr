@@ -8,7 +8,12 @@ import AddRepo from "@/modules/dashboard/components/add-repo";
 //   editProjectById,
 //   duplicateProjectById,
 // } from "modules/playground/actions";
-import { getAllPlaygroundForUser } from "@/modules/dashboard/actions";
+import {
+  deleteProjectById,
+  duplicateProjectById,
+  editProjectById,
+  getAllPlaygroundForUser,
+} from "@/modules/dashboard/actions";
 import ProjectTable from "@/modules/dashboard/components/project-table";
 
 const EmptyState = () => (
