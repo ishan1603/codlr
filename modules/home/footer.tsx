@@ -22,8 +22,13 @@ export function Footer() {
   ];
 
   return (
-    <footer className="border-t border-zinc-200 dark:border-zinc-800">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-8 flex flex-col items-center space-y-6 text-center">
+    <footer className="border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-black">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-4 flex items-center justify-between">
+        {/* Copyright Notice */}
+        <p className="text-sm text-zinc-500 dark:text-zinc-400">
+          &copy; {new Date().getFullYear()} codlr/AI. All rights reserved.
+        </p>
+
         {/* Social Links */}
         <div className="flex gap-4">
           {socialLinks.map((link, index) => (
@@ -37,11 +42,6 @@ export function Footer() {
             </Link>
           ))}
         </div>
-
-        {/* Copyright Notice */}
-        <p className="text-sm text-zinc-500 dark:text-zinc-400">
-          &copy; {new Date().getFullYear()} codlr/AI. All rights reserved.
-        </p>
       </div>
     </footer>
   );
