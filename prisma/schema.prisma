@@ -65,15 +65,16 @@ enum Templates {
 }
 
 model Playground {
-  id          String     @id @default(cuid()) @map("_id")
-  title       String
-  description String?
-  template    Templates  @default(REACT)
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
-  userId      String
-  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
-  Starmark    StarMark[]
+  id           String         @id @default(cuid()) @map("_id")
+  title        String
+  description  String?
+  template     Templates      @default(REACT)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  userId       String
+  Starmark     StarMark[]
+  user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  templateFile TemplateFile[]
 }
 
 model StarMark {
@@ -87,4 +88,14 @@ model StarMark {
   playground Playground @relation(fields: [playgroundId], references: [id], onDelete: Cascade)
 
   @@unique([userId, playgroundId])
+}
+
+model TemplateFile {
+  id           String   @id @default(cuid()) @map("_id")
+  content      Json
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  playgroundId String   @unique
+
+  playground Playground @relation(fields: [playgroundId], references: [id], onDelete: Cascade)
 }
